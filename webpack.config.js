@@ -14,6 +14,11 @@ module.exports = {
             "@src": path.resolve(__dirname, "./src"),
         },
     },
+    performance: {
+        hints: "warning", 
+        maxEntrypointSize: 51200000,
+        maxAssetSize: 51200000,
+      },
     module: {
         rules: [
             {
@@ -59,6 +64,7 @@ module.exports = {
         clean: true,
         publicPath: "/",
         filename: "[name].[chunkhash].js",
+        assetModuleFilename: 'images/[hash][ext][query]',
     },
     plugins: [
         new HtmlWebpackPlugin({

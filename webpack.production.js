@@ -1,6 +1,9 @@
 const { merge } = require("webpack-merge");
 const webpackCommon = require("./webpack.config");
 const { ESBuildPlugin, ESBuildMinifyPlugin } = require("esbuild-loader");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -20,6 +23,12 @@ module.exports = merge(webpackCommon, {
     },
     minimize: true,
     minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: { drop_console: true }, 
+        },
+      }),
+      new CssMinimizerPlugin(),
       new ESBuildMinifyPlugin({
         target: "es2015",
         css: true,
