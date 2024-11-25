@@ -11,14 +11,14 @@ const axiosRequestConfig: AxiosRequestConfig = {
   },
 };
 
-const dearAxios = axios.create(axiosRequestConfig);
+const customAxios = axios.create(axiosRequestConfig);
 
-dearAxios.interceptors.request.use(requestInterceptor as any, (err) => Promise.reject(err));
+customAxios.interceptors.request.use(requestInterceptor as any, (err) => Promise.reject(err));
 
-dearAxios.interceptors.response.use((res) => res, ResponseHandler);
+customAxios.interceptors.response.use((res) => res, ResponseHandler);
 
-export default dearAxios;
+export default customAxios;
 
 export const setAccessToken = (token: string) => {
-  dearAxios.defaults.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
+  customAxios.defaults.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
 };
