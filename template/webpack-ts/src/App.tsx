@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-background">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           B1ND AUTH-TEMPLATE
@@ -18,7 +18,7 @@ function App() {
         >
           B1NDGithub
         </a>
-      </header>
+      </div>
     </div>
   );
 }
